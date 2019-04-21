@@ -1,10 +1,9 @@
-package com.meli.magneto
+package com.meli.magneto.services
 
-import com.meli.magneto.services.DNAAnalyzerService
+import com.meli.magneto.exception.InvalidParametersException
 import spock.lang.Specification
 
-class DNAAnalyzerTest extends Specification {
-
+class DNAAnalyzerServiceTest extends Specification {
     DNAAnalyzerService dnaAnalyzer = new DNAAnalyzerService()
 
     def "Test isMutant with mutant dna"() {
@@ -62,4 +61,36 @@ class DNAAnalyzerTest extends Specification {
         result == true
     }
 
+    def "Test CheckDNASequence"() {
+        given:
+        String[] dna = ["AAA"]
+
+        when:
+        dnaAnalyzer.checkDNASequence(dna)
+
+        then:
+        thrown InvalidParametersException
+    }
+
+    def "Test CheckDNASequence different sequence length"() {
+        given:
+        String[] dna = ["AA", "BBB"]
+
+        when:
+        dnaAnalyzer.checkDNASequence(dna)
+
+        then:
+        thrown InvalidParametersException
+    }
+
+    def "Test CheckDNASequence invalid nitrogenous base"() {
+        given:
+        String[] dna = ["AAA", "BBB", "CCC"]
+
+        when:
+        dnaAnalyzer.checkDNASequence(dna)
+
+        then:
+        thrown InvalidParametersException
+    }
 }

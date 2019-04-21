@@ -1,15 +1,15 @@
 package com.meli.magneto.model;
 
 public class DNA {
-    private String[] dnaSequence;
+    private String[] dna;
     private Boolean isMutant;
 
-    public String[] getDnaSequence() {
-        return dnaSequence;
+    public String[] getDna() {
+        return dna;
     }
 
-    public void setDnaSequence(String[] dnaSequence) {
-        this.dnaSequence = dnaSequence;
+    public void setDna(String[] dna) {
+        this.dna = dna;
     }
 
     public Boolean getMutant() {

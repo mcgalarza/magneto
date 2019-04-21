@@ -1,11 +1,14 @@
 package com.meli.magneto.services;
 
+import com.meli.magneto.exception.InvalidParametersException;
 import org.springframework.stereotype.Service;
+import java.util.stream.Stream;
 
 @Service
 public class DNAAnalyzerService {
 
     private static Integer MUTANT_QUANTITY = 2;
+    private static String NITROGENOUS_BASE_PATTERN = "[A|T|C|G]+";
 
     public Boolean isMutant(String[] dna) {
         String[][] matrix = toMatrix(dna);
@@ -42,6 +45,15 @@ public class DNAAnalyzerService {
 
         return mutantQuantityCovered(count) ? true : false;
 
+    }
+
+    public void checkDNASequence(String[] dna) throws InvalidParametersException {
+        Integer dnaLength = dna.length;
+        Stream<String> stream = Stream.of(dna);
+        stream.forEach(s -> {
+            if (s.length() != dnaLength || !s.matches(NITROGENOUS_BASE_PATTERN))
+                throw new InvalidParametersException();
+        });
     }
 
     private String[][] toMatrix(String[] dna) {
