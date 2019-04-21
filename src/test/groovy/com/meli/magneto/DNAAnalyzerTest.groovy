@@ -1,10 +1,11 @@
 package com.meli.magneto
 
+import com.meli.magneto.services.DNAAnalyzerService
 import spock.lang.Specification
 
 class DNAAnalyzerTest extends Specification {
 
-    DNAAnalyzer dnaAnalyzer = new DNAAnalyzer()
+    DNAAnalyzerService dnaAnalyzer = new DNAAnalyzerService()
 
     def "Test isMutant with mutant dna"() {
         given:

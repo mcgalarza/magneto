@@ -1,6 +1,9 @@
-package com.meli.magneto;
+package com.meli.magneto.services;
 
-public class DNAAnalyzer {
+import org.springframework.stereotype.Service;
+
+@Service
+public class DNAAnalyzerService {
 
     private static Integer MUTANT_QUANTITY = 2;
 
