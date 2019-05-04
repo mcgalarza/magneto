@@ -18,8 +18,6 @@ import java.util.stream.Stream;
 
 @Service
 public class MutantService {
-    private static String NITROGENOUS_BASE_PATTERN = "[A|T|C|G]+";
-
     private DNARepository dnaRepository;
 
     @Autowired
@@ -28,7 +26,6 @@ public class MutantService {
     }
 
     public void isMutant(DNARequest dnaRequest) throws NonMutantException {
-        checkDNASequence(dnaRequest.getDna());
         List<SequenceFinder> sequenceFinders = getSequenceFinders();
         DNA dnaToAnalyze = new DNA(dnaRequest.getDna());
         dnaToAnalyze.determineAnomaly(sequenceFinders);
@@ -50,15 +47,6 @@ public class MutantService {
         sequenceFinders.add(rightDownSequenceFinder);
 
         return sequenceFinders;
-    }
-
-    private void checkDNASequence(String[] dna) throws InvalidParametersException {
-        Integer dnaLength = dna.length;
-        Stream<String> stream = Stream.of(dna);
-        stream.forEach(s -> {
-            if (s.length() != dnaLength || !s.matches(NITROGENOUS_BASE_PATTERN))
-                throw new InvalidParametersException();
-        });
     }
 
 }
