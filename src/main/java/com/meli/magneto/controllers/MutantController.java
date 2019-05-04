@@ -29,8 +29,10 @@ public class MutantController {
         } catch (InvalidParametersException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-        mutantService.isMutant(dnaRequest);
-        return new ResponseEntity<>("", HttpStatus.OK);
+
+        Boolean mutant = mutantService.isMutant(dnaRequest);
+        HttpStatus status = mutant ? HttpStatus.OK : HttpStatus.FORBIDDEN;
+        return new ResponseEntity<>("", status);
     }
 
 }

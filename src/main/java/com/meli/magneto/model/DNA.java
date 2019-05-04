@@ -13,15 +13,21 @@ import java.util.List;
 public class DNA implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     transient String[] dnaSequenceAsArray;
     private String dnaSequence;
     private Boolean mutant;
 
+    public DNA() {};
+
     public DNA(String[] dnaSequenceAsArray) {
         this.dnaSequenceAsArray = dnaSequenceAsArray;
         this.dnaSequence = Arrays.toString(dnaSequenceAsArray);
+        this.id = String.valueOf(dnaSequence.hashCode());
+    }
+
+    public Boolean isMutant() {
+        return mutant;
     }
 
     public Boolean determineAnomaly(List<SequenceFinder> sequenceFinders) {
@@ -50,10 +56,6 @@ public class DNA implements Serializable {
 
     private Boolean quantityCovered(int count) {
         return count >= 2;
-    }
-
-    public Boolean isMutant() {
-        return mutant;
     }
 
 }

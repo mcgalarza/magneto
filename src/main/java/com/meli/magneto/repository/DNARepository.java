@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DNARepository extends JpaRepository<DNA, Long> {
+public interface DNARepository extends JpaRepository<DNA, String> {
 
     Long countByMutant(Boolean isMutant);
 

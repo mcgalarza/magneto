@@ -1,7 +1,5 @@
 package com.meli.magneto.services;
 
-import com.meli.magneto.exception.InvalidParametersException;
-import com.meli.magneto.exception.NonMutantException;
 import com.meli.magneto.model.DNA;
 import com.meli.magneto.model.DNARequest;
 import com.meli.magneto.repository.DNARepository;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 public class MutantService {
@@ -25,13 +22,12 @@ public class MutantService {
         this.dnaRepository = dnaRepository;
     }
 
-    public void isMutant(DNARequest dnaRequest) throws NonMutantException {
+    public Boolean isMutant(DNARequest dnaRequest) {
         List<SequenceFinder> sequenceFinders = getSequenceFinders();
         DNA dnaToAnalyze = new DNA(dnaRequest.getDna());
         dnaToAnalyze.determineAnomaly(sequenceFinders);
         dnaRepository.save(dnaToAnalyze);
-        if (!dnaToAnalyze.isMutant())
-            throw new NonMutantException();
+        return dnaToAnalyze.isMutant();
     }
 
     private List<SequenceFinder> getSequenceFinders() {
