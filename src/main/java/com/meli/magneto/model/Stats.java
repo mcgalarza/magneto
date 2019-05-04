@@ -2,6 +2,8 @@ package com.meli.magneto.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.text.DecimalFormat;
+
 public class Stats {
     @JsonProperty("count_mutant_dna")
     private Long mutantCount;
@@ -25,7 +27,7 @@ public class Stats {
     }
 
     private Float calculateRatio() {
-        return humanCount > 0 ? mutantCount.floatValue()/humanCount.floatValue() : 0;
+        return humanCount > 0 ? mutantCount.floatValue()/humanCount.floatValue() : mutantCount.floatValue();
     }
 
 }
