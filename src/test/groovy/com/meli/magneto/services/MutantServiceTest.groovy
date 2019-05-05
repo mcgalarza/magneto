@@ -4,13 +4,18 @@ import com.meli.magneto.model.DNA
 import com.meli.magneto.model.DNARequest
 import com.meli.magneto.repository.DNARepository
 import spock.lang.Specification
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 class MutantServiceTest extends Specification {
     def dnaRepository = Mock(DNARepository) {
         save(_ as DNA) >> new DNA()
     }
 
-    def mutantService = new MutantService(dnaRepository)
+    def rabbitTemplate = Mock(RabbitTemplate) {
+        convertAndSend(_ as String, _ as DNA) >> {}
+    }
+
+    def mutantService = new MutantService(dnaRepository, rabbitTemplate)
 
     def "isMutant test with mutant dna sequence"() {
         given:
