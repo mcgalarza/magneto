@@ -1,14 +1,20 @@
 version: '3'
 services:
   api:
+    image: magneto
     build: .
     ports:
      - "8080:8080"
     depends_on:
     - postgres
-    image: magneto
+    - redis
   postgres:
     image: postgres:11
     container_name: "postgres"
     ports:
       - "5432:5432"
+  redis:
+    image: redis
+    container_name: "redis"
+    ports:
+      - "6379:6379"
