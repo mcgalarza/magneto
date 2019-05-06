@@ -8,6 +8,8 @@ import com.meli.magneto.strategies.DownSequenceFinder;
 import com.meli.magneto.strategies.RightDownSequenceFinder;
 import com.meli.magneto.strategies.RightSequenceFinder;
 import com.meli.magneto.strategies.SequenceFinder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -19,6 +21,7 @@ import java.util.List;
 @Service
 public class MutantService {
 
+    private Logger logger = LogManager.getLogger(MutantService.class);
     private DNARepository dnaRepository;
     private RabbitTemplate rabbitTemplate;
 
@@ -34,6 +37,7 @@ public class MutantService {
         DNA dnaToAnalyze = new DNA(dnaRequest.getDna());
         dnaToAnalyze.determineAnomaly(sequenceFinders);
         rabbitTemplate.convertAndSend(MqConfiguration.QUEUE_NAME, dnaToAnalyze);
+        logger.info("Analyzed DNA and result is " + dnaToAnalyze.isMutant());
         return dnaToAnalyze.isMutant();
     }
 

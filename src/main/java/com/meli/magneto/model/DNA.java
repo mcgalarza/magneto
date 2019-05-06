@@ -32,6 +32,14 @@ public class DNA implements Serializable {
         return mutant;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getDnaSequence() {
+        return dnaSequence;
+    }
+
     public Boolean determineAnomaly(List<SequenceFinder> sequenceFinders) {
         String[][] dnaAsMatrix = Utils.toMatrix(dnaSequenceAsArray);
         int dnaLength = dnaSequenceAsArray.length;
