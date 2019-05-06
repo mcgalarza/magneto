@@ -3,7 +3,6 @@ package com.meli.magneto.controllers
 import com.meli.magneto.model.Stats
 import com.meli.magneto.services.StatsService
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import spock.lang.Specification
 
 class StatsControllerTest extends Specification {

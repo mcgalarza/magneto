@@ -2,7 +2,7 @@ package com.meli.magneto.services
 
 import com.meli.magneto.model.DNA
 import com.meli.magneto.model.DNARequest
-import com.meli.magneto.repository.DNARepository
+import com.meli.magneto.repositories.DNARepository
 import spock.lang.Specification
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 

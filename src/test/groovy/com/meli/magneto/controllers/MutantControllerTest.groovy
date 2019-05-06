@@ -2,7 +2,7 @@ package com.meli.magneto.controllers
 
 import com.meli.magneto.model.DNA
 import com.meli.magneto.model.DNARequest
-import com.meli.magneto.repository.DNARepository
+import com.meli.magneto.repositories.DNARepository
 import com.meli.magneto.services.MutantService
 import com.meli.magneto.validations.DNAValidator
 import org.springframework.amqp.rabbit.core.RabbitTemplate
