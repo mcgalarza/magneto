@@ -1,9 +1,7 @@
 package com.meli.magneto.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
-import java.text.DecimalFormat;
 
 public class Stats implements Serializable {
     @JsonProperty("count_mutant_dna")

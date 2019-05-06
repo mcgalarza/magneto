@@ -1,7 +1,7 @@
 package com.meli.magneto.services;
 
 import com.meli.magneto.model.Stats;
-import com.meli.magneto.repository.DNARepository;
+import com.meli.magneto.repositories.DNARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

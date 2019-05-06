@@ -1,4 +1,4 @@
-package com.meli.magneto.repository;
+package com.meli.magneto.repositories;
 
 import com.meli.magneto.model.DNA;
 import org.springframework.data.jpa.repository.JpaRepository;

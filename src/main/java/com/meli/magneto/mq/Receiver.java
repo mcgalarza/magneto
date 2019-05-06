@@ -1,7 +1,7 @@
 package com.meli.magneto.mq;
 
 import com.meli.magneto.model.DNA;
-import com.meli.magneto.repository.DNARepository;
+import com.meli.magneto.repositories.DNARepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

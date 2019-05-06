@@ -11,7 +11,6 @@ public class NitrogenousBaseValidationRule implements DNAValidationRule {
 
     @Override
     public void validate(DNARequest dnaRequest) {
-        Integer dnaLength = dnaRequest.getDna().length;
         List<String> dnaSequence = Arrays.asList(dnaRequest.getDna());
 
         dnaSequence.forEach(s -> {

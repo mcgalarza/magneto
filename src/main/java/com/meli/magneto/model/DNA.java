@@ -3,7 +3,9 @@ package com.meli.magneto.model;
 import com.meli.magneto.strategies.SequenceFinder;
 import com.meli.magneto.utils.Utils;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
