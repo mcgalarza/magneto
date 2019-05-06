@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/stats")
 public class StatsController {
-    @Autowired
+
     private StatsService statsService;
+
+    @Autowired
+    public StatsController(StatsService statsService) {
+        this.statsService = statsService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Stats> getStats() {

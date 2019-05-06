@@ -27,6 +27,10 @@ public class Stats implements Serializable {
         return humanCount;
     }
 
+    public Float getRatio() {
+        return ratio;
+    }
+
     private Float calculateRatio() {
         return humanCount > 0 ? mutantCount.floatValue()/humanCount.floatValue() : mutantCount.floatValue();
     }

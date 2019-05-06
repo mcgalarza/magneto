@@ -19,4 +19,17 @@ class NonEmptyValidationRuleTest extends Specification {
         then:
         thrown InvalidParametersException
     }
+
+    def "Validate non empty sequence"() {
+        given:
+        def dnaRequest = Mock(DNARequest) {
+            getDna() >> ["ATGCGA", "CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
+        }
+
+        when:
+        def result = nonemptyValidationRule.validate(dnaRequest)
+
+        then:
+        assert result == null
+    }
 }

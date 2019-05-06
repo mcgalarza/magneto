@@ -20,4 +20,17 @@ class LengthValidationRuleTest extends Specification {
         then:
         thrown InvalidParametersException
     }
+
+    def "Validate valid length"() {
+        given:
+        def dnaRequest = Mock(DNARequest) {
+            getDna() >> ["AAA", "AAA", "CCC"]
+        }
+
+        when:
+        def result = lengthValidationRule.validate(dnaRequest)
+
+        then:
+        assert result == null
+    }
 }
