@@ -15,7 +15,7 @@ docker-compose up
 ```
 La aplicación se iniciará en el puerto 8081
 
-Además, la API se encuentra hosteada en Heroku. Utilizando los plugins de Heroku de postgres, redis y cloudAMQP. 
+Además, la API se encuentra hosteada en Heroku. Utilizando los add-ons de Heroku de postgres, redis y cloudAMQP. 
 
 ## Ejemplo de uso
 
