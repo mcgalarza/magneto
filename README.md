@@ -15,9 +15,7 @@ docker-compose up
 ```
 La aplicación se iniciará en el puerto 8081
 
-Además, la API se encuentra hosteada en Heroku. Utilizando los plugins de Heroku de postgres y redis. 
-
-Aclaración: la solución de mensajería utilizando colas no se llegó a deployar en Heroku, este feature solo se podrá ver ejecutando la aplicación de manera local.
+Además, la API se encuentra hosteada en Heroku. Utilizando los plugins de Heroku de postgres, redis y cloudAMQP. 
 
 ## Ejemplo de uso
 
