@@ -29,6 +29,9 @@ public class MqConfiguration {
     @Value("${rabbitmq.password}")
     private String password;
 
+    @Value("${rabbitmq.vhost}")
+    private String vhost;
+
     @Bean
     public ConnectionFactory connectionFactory() throws Exception {
         final CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
@@ -36,6 +39,7 @@ public class MqConfiguration {
         connectionFactory.setPort(port);
         connectionFactory.setUsername(user);
         connectionFactory.setPassword(password);
+        connectionFactory.setVirtualHost(vhost);
         return connectionFactory;
     }
 
